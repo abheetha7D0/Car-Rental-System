@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @AllArgsConstructor
@@ -19,11 +20,22 @@ public class BookingDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingDetailsId;
 
+    @NotNull(message = "pickUpDate Required")
     private String pickUpDate;
+
+    @NotNull(message = "returnDate Required")
     private String returnDate;
+
+    @NotNull(message = "loseDamagePrice Required")
     private double loseDamagePrice;
+
+    @NotNull(message = "loseDamageImage Required")
     private String loseDamageImage;
+
+    @NotNull(message = "bookingStatus Required")
     private String bookingStatus;
+
+    @NotNull(message = "customerNIC Required")
     private String customerNIC;
 
     @JsonIgnore

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,8 +18,11 @@ public class VehicleSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int vehicleScheduleId;
+    @NotNull(message = "vehicleStartDate Required")
     private String vehicleStartDate;
+    @NotNull(message = "vehicleEndDate Required")
     private String vehicleEndDate;
+    @NotNull(message = "vehicleScheduleStatus Required")
     private String vehicleScheduleStatus;
 
     @ManyToOne

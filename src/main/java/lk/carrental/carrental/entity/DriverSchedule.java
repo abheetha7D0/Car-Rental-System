@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,8 +17,14 @@ public class DriverSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int diverScheduleId;
+
+    @NotNull(message = "driverStartDate Required")
     private String driverStartDate;
+
+    @NotNull(message = "driverEndDate Required")
     private String driverEndDate;
+
+    @NotNull(message = "driverScheduleStatus Required")
     private String driverScheduleStatus;
 
     @ManyToOne

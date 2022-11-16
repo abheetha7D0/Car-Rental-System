@@ -15,9 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @Service
 @Transactional
+@SuppressWarnings("Unchecked")
 public class BookingDetailsServiceImpl implements BookingDetailsService {
+
     @Autowired
     private BookingDetailsRepo repo;
 

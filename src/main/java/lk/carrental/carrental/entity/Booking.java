@@ -16,6 +16,7 @@ import java.util.List;
 @ToString
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String bookingId;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
