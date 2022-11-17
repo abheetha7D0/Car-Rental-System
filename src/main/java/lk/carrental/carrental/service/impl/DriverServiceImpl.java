@@ -17,11 +17,14 @@ import java.util.List;
 @Transactional
 public class DriverServiceImpl implements DriverService {
 
-    @Autowired
-    private DriverRepo repo;
+    private final DriverRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public DriverServiceImpl(DriverRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public DriverDTO getDriverForLogIn(UserDTO userDTO) {

@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/vehicleSchedule")
 @CrossOrigin
 public class VehicleScheduleController {
-    @Autowired
+    final
     VehicleScheduleService vehicleScheduleService;
+
+    public VehicleScheduleController(VehicleScheduleService vehicleScheduleService) {
+        this.vehicleScheduleService = vehicleScheduleService;
+    }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriverSchedule(@RequestBody VehicleScheduleDTO dto){

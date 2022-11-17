@@ -18,8 +18,12 @@ import java.net.URISyntaxException;
 @RequestMapping("/booking")
 @CrossOrigin
 public class BookingContoller {
-    @Autowired
+    final
     BookingService bookingService;
+
+    public BookingContoller(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllBooking(){

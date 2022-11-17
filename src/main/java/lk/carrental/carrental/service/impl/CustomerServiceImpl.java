@@ -18,11 +18,14 @@ import java.util.List;
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-    @Autowired
-    private CustomerRepo repo;
+    private final CustomerRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public CustomerServiceImpl(CustomerRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public CustomerDTO2 getCustomerForLogIn(UserDTO userDTO) {

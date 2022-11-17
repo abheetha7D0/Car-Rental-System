@@ -15,11 +15,15 @@ import java.util.List;
 @Transactional
 @Service
 public class VehicleScheduleServiceImpl implements VehicleScheduleService {
-    @Autowired
+    final
     VehicleScheduleRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public VehicleScheduleServiceImpl(VehicleScheduleRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public void updateVehicleSchedule(VehicleScheduleDTO dto) {

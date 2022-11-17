@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/bookingDetails")
 @CrossOrigin
 public class BookingDetailsController {
-    @Autowired
+    final
     BookingDetailsService bookingDetailsService;
+
+    public BookingDetailsController(BookingDetailsService bookingDetailsService) {
+        this.bookingDetailsService = bookingDetailsService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAll(){

@@ -17,14 +17,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/logIn")
 @CrossOrigin
 public class LogInController {
-    @Autowired
+    final
     CustomerService customerService;
 
-    @Autowired
+    final
     DriverService driverService;
 
-    @Autowired
+    final
     SystemUserService userService;
+
+    public LogInController(CustomerService customerService, DriverService driverService, SystemUserService userService) {
+        this.customerService = customerService;
+        this.driverService = driverService;
+        this.userService = userService;
+    }
 
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

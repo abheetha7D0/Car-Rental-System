@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/payment")
 @CrossOrigin
 public class PaymentController {
-    @Autowired
+    final
     PaymentService paymentService;
-    
+
+    public PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil savePayment(@RequestBody PaymentDTO dto){
         paymentService.savePayment(dto);

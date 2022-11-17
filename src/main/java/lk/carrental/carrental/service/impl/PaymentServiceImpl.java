@@ -13,11 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PaymentServiceImpl implements PaymentService {
 
-    @Autowired
-    private PaymentRepo repo;
+    private final PaymentRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public PaymentServiceImpl(PaymentRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public void savePayment(PaymentDTO dto) {

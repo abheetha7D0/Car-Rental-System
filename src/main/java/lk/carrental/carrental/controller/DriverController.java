@@ -18,8 +18,12 @@ import java.net.URISyntaxException;
 @RequestMapping("/driver")
 @CrossOrigin
 public class DriverController {
-    @Autowired
+    final
     DriverService driverService;
+
+    public DriverController(DriverService driverService) {
+        this.driverService = driverService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllReturnCar(){

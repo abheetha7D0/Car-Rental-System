@@ -15,11 +15,14 @@ import java.util.List;
 @Service
 @Transactional
 public class SystemUserServiceImpl implements SystemUserService {
-    @Autowired
-    private SystemUserRepo repo;
+    private final SystemUserRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public SystemUserServiceImpl(SystemUserRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public SystemUserDTO getUserForLogIn(UserDTO userDTO) {

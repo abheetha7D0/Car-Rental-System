@@ -18,17 +18,20 @@ import java.util.List;
 
 @Service
 @Transactional
-@SuppressWarnings("Unchecked")
 public class BookingDetailsServiceImpl implements BookingDetailsService {
 
-    @Autowired
-    private BookingDetailsRepo repo;
+    private final BookingDetailsRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
 
-    @Autowired
+    final
     BookingRepo bookingRepo;
+
+    public BookingDetailsServiceImpl(BookingDetailsRepo repo, ModelMapper mapper, BookingRepo bookingRepo) {
+        this.repo = repo;
+        this.mapper = mapper;
+        this.bookingRepo = bookingRepo;
+    }
 
 
     @Override

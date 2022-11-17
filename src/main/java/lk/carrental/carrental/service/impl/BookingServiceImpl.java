@@ -18,32 +18,30 @@ import java.util.List;
 @Transactional
 @Service
 public class BookingServiceImpl implements BookingService {
-    @Autowired
-    private BookingRepo bookingRepo;
+    private final BookingRepo bookingRepo;
 
-    @Autowired
-    private DriverService driverService;
+    private final DriverService driverService;
 
-    @Autowired
-    private CustomerRepo customerRepo;
+    private final BookingDetailsRepo bookingDetailsRepo;
 
-    @Autowired
-    private BookingDetailsRepo bookingDetailsRepo;
 
-    @Autowired
-    private DriverRepo driverRepo;
+    private final VehicleRepo vehicleRepo;
 
-    @Autowired
-    private VehicleRepo vehicleRepo;
+    private final DriverScheduleRepo driverScheduleRepo;
 
-    @Autowired
-    private DriverScheduleRepo driverScheduleRepo;
+    private final VehicleScheduleRepo vehicleScheduleRepo;
 
-    @Autowired
-    private VehicleScheduleRepo vehicleScheduleRepo;
+    private final ModelMapper mapper;
 
-    @Autowired
-    private ModelMapper mapper;
+    public BookingServiceImpl(BookingRepo bookingRepo, DriverService driverService, BookingDetailsRepo bookingDetailsRepo, VehicleRepo vehicleRepo, DriverScheduleRepo driverScheduleRepo, VehicleScheduleRepo vehicleScheduleRepo, ModelMapper mapper) {
+        this.bookingRepo = bookingRepo;
+        this.driverService = driverService;
+        this.bookingDetailsRepo = bookingDetailsRepo;
+        this.vehicleRepo = vehicleRepo;
+        this.driverScheduleRepo = driverScheduleRepo;
+        this.vehicleScheduleRepo = vehicleScheduleRepo;
+        this.mapper = mapper;
+    }
 
     @Override
     public String getLastRid() {

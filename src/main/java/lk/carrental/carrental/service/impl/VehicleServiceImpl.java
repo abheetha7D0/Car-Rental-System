@@ -15,11 +15,14 @@ import java.util.List;
 @Service
 @Transactional
 public class VehicleServiceImpl implements VehicleService {
-    @Autowired
-    private VehicleRepo repo;
+    private final VehicleRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public VehicleServiceImpl(VehicleRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public void saveVehicle(VehicleDTO dto) {

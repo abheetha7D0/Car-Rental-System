@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/driverSchedule")
 @CrossOrigin
 public class DriverScheduleController {
-    @Autowired
+    final
     DriverScheduleService driverScheduleService;
+
+    public DriverScheduleController(DriverScheduleService driverScheduleService) {
+        this.driverScheduleService = driverScheduleService;
+    }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriverSchedule(@RequestBody DriverScheduleDTO dto){

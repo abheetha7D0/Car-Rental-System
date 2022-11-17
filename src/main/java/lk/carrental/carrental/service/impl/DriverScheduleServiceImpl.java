@@ -16,11 +16,16 @@ import java.util.List;
 @Transactional
 @Service
 public class DriverScheduleServiceImpl implements DriverScheduleService {
-    @Autowired
+    final
     DriverScheduleRepo repo;
 
-    @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
+
+    public DriverScheduleServiceImpl(DriverScheduleRepo repo, ModelMapper mapper) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
+
     @Override
     public void updateDriverSchedule(DriverScheduleDTO dto) {
         repo.save(mapper.map(dto, DriverSchedule.class));

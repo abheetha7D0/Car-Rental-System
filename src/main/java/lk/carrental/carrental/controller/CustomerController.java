@@ -18,8 +18,12 @@ import java.net.URISyntaxException;
 @RequestMapping("/customer")
 @CrossOrigin
 public class CustomerController {
-    @Autowired
+    final
     CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCustomer(){
